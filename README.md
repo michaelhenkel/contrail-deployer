@@ -209,3 +209,7 @@ contrail-deployer -i `pwd`/instances.yaml -privk /root/.ssh/id_rsa -pubk /root/.
   Whenever an action is ran separately, a new container is being created. The configure    
   action pulls in the kolla ansible playbooks, which are required for the install action.   
   For now, the action must be set to 23 (configure and install).    
+
+- on a MAC the Netskope client prevents a successful ssh connection from within a container    
+  to an AWS instance. This can be worked around by renaming Netskope binaries and killing    
+  the processes.

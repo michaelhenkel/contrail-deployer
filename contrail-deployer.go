@@ -100,11 +100,10 @@ func main() {
 		panic(err)
 	}
 
-	if _, err := cli.ImagePull(ctx, *deployerImage, types.ImagePullOptions{}); err != nil {
+	if r, err := cli.ImagePull(ctx, *deployerImage, types.ImagePullOptions{}); err != nil {
 		panic(err)
 	} else {
-		fmt.Printf("Image %s successfully pulled\n", *deployerImage)
-		//io.Copy(os.Stdout, r)
+		io.Copy(os.Stdout, r)
 	}
 
 	resp, err := cli.ContainerCreate(
