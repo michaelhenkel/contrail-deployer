@@ -56,3 +56,90 @@ OPTIONS:
   -pubk string
         Path to public ssh key
 ```
+
+# Example
+
+```
+cat << EOF > instances.yaml
+provider_config:
+  kvm:
+    image: CentOS-7-x86_64-GenericCloud-1802.qcow2.xz
+    image_url: http://10.87.64.32/
+    ssh_pwd: c0ntrail123
+    ssh_user: root
+    vcpu: 8
+    vram: 24000
+    vdisk: 100G
+    subnet_prefix: 192.168.1.0
+    subnet_netmask: 255.255.255.0
+    gateway: 192.168.1.1
+    nameserver: 10.84.5.100
+    ntpserver: 192.168.1.1
+    domainsuffix: local
+instances:
+  kvm1:
+    provider: kvm
+    host: 10.87.64.31
+    bridge: br1
+    ip: 192.168.1.100
+    roles:
+      config_database:
+      config:
+      control:
+      analytics_database:
+      analytics:
+      webui:
+      k8s_master:
+      kubemanager:
+  kvm2:
+    provider: kvm
+    host: 10.87.64.32
+    bridge: br1
+    ip: 192.168.1.101
+    roles:
+      config_database:
+      config:
+      control:
+      analytics_database:
+      analytics:
+      webui:
+      kubemanager:
+  kvm3:
+    provider: kvm
+    host: 10.87.64.33
+    bridge: br1
+    ip: 192.168.1.102
+    roles:
+      config_database:
+      config:
+      control:
+      analytics_database:
+      analytics:
+      webui:
+      kubemanager:
+  kvm4:
+    provider: kvm
+    host: 10.87.64.33
+    bridge: br1
+    ip: 192.168.1.104
+    UPGRADE_KERNEL: true
+    roles:
+      vrouter:
+      k8s_node:
+  kvm5:
+    provider: kvm
+    host: 10.87.64.32
+    bridge: br1
+    ip: 192.168.1.105
+    UPGRADE_KERNEL: true
+    roles:
+      vrouter:
+      k8s_node:
+global_configuration:
+  CONTAINER_REGISTRY: opencontrailnightly
+contrail_configuration:
+  CONTRAIL_VERSION: latest
+EOF
+
+contrail-deployer -i `pwd`/instances.yaml -o kubernetes all
+```
