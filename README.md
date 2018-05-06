@@ -199,6 +199,7 @@ contrail_configuration:
 global_configuration:
   CONTAINER_REGISTRY: opencontrailnightly
 EOF
+
 contrail-deployer -i `pwd`/instances.yaml -privk /root/.ssh/id_rsa -pubk /root/.ssh/id_rsa.pub -o kubernetes all
 ```
 
