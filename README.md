@@ -24,7 +24,7 @@ chmod +x /usr/local/bin/contrail-deployer
 ```
 
 ## Windows
-Download https://github.com/michaelhenkel/contrail-deployer/blob/master/win/contrail-deployer-Windows-x86_64.exe\?raw\=true
+Download https://github.com/michaelhenkel/contrail-deployer/raw/master/win/contrail-deployer-Windows-x86_64.exe
 
 # Usage
 ```
