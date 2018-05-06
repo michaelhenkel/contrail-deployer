@@ -143,3 +143,10 @@ EOF
 
 contrail-deployer -i `pwd`/instances.yaml -o kubernetes all
 ```
+
+# Known issues
+
+- currently the install action cannot be run separately from the configure action.    
+  Whenever an action is ran separately, a new container is being created. The configure    
+  action pulls in the kolla ansible playbooks, which are required for the install action.   
+  For now, the action must be set to 23 (configure and install).    
