@@ -34,10 +34,10 @@ func IsValidAction(actionList []string) bool {
 }
 
 func main() {
-	instanceFile := flag.String("i", "instance.yaml", "Path to instance.yaml")
+	instanceFile := flag.String("i", "instance.yaml", "Absolute path to instance.yaml")
 	orchestrator := flag.String("o", "none", "openstack|kubernetes|none")
-	privateKey := flag.String("privk", "", "Path to private ssh key")
-	publicKey := flag.String("pubk", "", "Path to public ssh key")
+	privateKey := flag.String("privk", "", "Absolute path to private ssh key")
+	publicKey := flag.String("pubk", "", "Absolute path to public ssh key")
 	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer", "Contrail Deployer Docker image name")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")

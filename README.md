@@ -48,13 +48,13 @@ OPTIONS:
   -di string
         Contrail Deployer Docker image name (default "michaelhenkel/contrail-deployer")
   -i string
-        Path to instance.yaml (default "instance.yaml")
+        Absolute Path to instance.yaml (default "instance.yaml")
   -o string
         openstack|kubernetes|none (default "none")
   -privk string
-        Path to private ssh key
+        Absolute path to private ssh key
   -pubk string
-        Path to public ssh key
+        Absolute path to public ssh key
 ```
 
 # Example
