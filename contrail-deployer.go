@@ -38,7 +38,7 @@ func main() {
 	orchestrator := flag.String("o", "none", "openstack|kubernetes|none")
 	privateKey := flag.String("privk", "", "Absolute path to private ssh key")
 	publicKey := flag.String("pubk", "", "Absolute path to public ssh key")
-	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer", "Contrail Deployer Docker image name")
+	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer:alpine", "Contrail Deployer Docker image name")
 	cherryPick := flag.String("cp", "", "cherry pick id for ansible deployer (e.g. 90/42790/1)")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
