@@ -39,7 +39,8 @@ func main() {
 	privateKey := flag.String("privk", "", "Absolute path to private ssh key")
 	publicKey := flag.String("pubk", "", "Absolute path to public ssh key")
 	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer:alpine", "Contrail Deployer Docker image name")
-	cherryPick := flag.String("cp", "", "cherry pick id for ansible deployer (e.g. 90/42790/1)")
+	branch := flag.String("b", "", "checkout a specific branch of contrail ansible deployer")
+	cherryPick := flag.String("cp", "", "cherry pick id for ansible deployer (e.g. 90/42790/1). Only works with branch (-b) option")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "./contrail-deployer [OPTIONS] [ACTION]\n")
@@ -72,8 +73,11 @@ func main() {
 		envList = append(envList, "action="+action)
 	}
 	envList = append(envList, "orchestrator="+*orchestrator)
-	if *cherryPick != "" {
-		envList = append(envList, "CP="+*cherryPick)
+	if *branch != "" {
+		envList = append(envList, "B="+*branch)
+		if *cherryPick != "" {
+			envList = append(envList, "CP="+*cherryPick)
+		}
 	}
 	var mountList []mount.Mount
 	if *instanceFile != "" {
