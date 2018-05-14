@@ -34,13 +34,13 @@ func IsValidAction(actionList []string) bool {
 }
 
 func main() {
-	instanceFile := flag.String("i", "instance.yaml", "Absolute path to instance.yaml")
-	orchestrator := flag.String("o", "none", "openstack|kubernetes|none")
-	privateKey := flag.String("privk", "", "Absolute path to private ssh key")
-	publicKey := flag.String("pubk", "", "Absolute path to public ssh key")
-	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer:alpine", "Contrail Deployer Docker image name")
-	branch := flag.String("b", "", "checkout a specific branch of contrail ansible deployer")
-	cherryPick := flag.String("cp", "", "cherry pick id for ansible deployer (e.g. 90/42790/1). Only works with branch (-b) option")
+	instanceFile := flag.String("i", "instance.yaml", "Absolute path to instance.yaml (mandatory)")
+	orchestrator := flag.String("o", "none", "openstack|kubernetes|none (optional)")
+	privateKey := flag.String("privk", "", "Absolute path to private ssh key (optional)")
+	publicKey := flag.String("pubk", "", "Absolute path to public ssh key (optional)")
+	deployerImage := flag.String("di", "michaelhenkel/contrail-deployer:alpine", "Contrail Deployer Docker image name (optional)")
+	branch := flag.String("b", "", "checkout a specific branch of contrail ansible deployer (optional)")
+	cherryPick := flag.String("cp", "", "cherry pick id for ansible deployer (e.g. 90/42790/1). Only works with branch (-b) option (optional)")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "./contrail-deployer [OPTIONS] [ACTION]\n")
